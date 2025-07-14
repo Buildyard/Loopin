@@ -3,9 +3,10 @@
 
 
 const ReviewsSection = () => {
-  return 
+  return(<>
   <div style={{ height: '100vh', backgroundColor: '#a7c07eff' }}> 
   <h2>Reviews Section</h2>
-  </div>;
+  </div>
+  </>);
 }
 export default ReviewsSection;
