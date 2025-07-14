@@ -4,15 +4,13 @@ import './App.css';
 import About from './pages/About.jsx';
 import Home from './pages/Home.jsx';
 import NotFound from './pages/NotFound.jsx';
+import Navbar from './sections/0Navbar.jsx';
 
 const App = () => {
 
   return (
     <div>
-      <nav style={{ marginBottom: '1rem' }}>
-        <Link to="/">Home</Link> | <Link to="/about">About</Link>
-      </nav>
-
+      <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />

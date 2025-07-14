@@ -7,12 +7,21 @@ import { Button, Typography } from '@mui/material';
 
 const Home = () => {
   return <>
-  Hiasas
-  <Button variant="contained" color="primary">hi</Button>
+  <div id='hero'>
   <HeroSection />
+  </div>
+  
+  <div id='offerings'>
   <OfferingsSection />
+  </div>
+
+  <div id='important'>
   <ImportantNote />
+  </div>
+  
+  <div id='reviews'>
   <ReviewsSection />
+  </div>
   </>;
 }
 export default Home;
