@@ -21,11 +21,10 @@ const Navbar = () => {
         left: 0,
         right: 0,
         zIndex: 9999,
-        transition: 'color 0.3s ease, transform 0.3s ease',
-        padding: isScrolled ? '10px 20px' : '20px 40px',
+        padding: '20px 40px',
         display: 'flex',
         alignItems: 'center',
-        justifyContent: isScrolled ? 'center' : 'space-between',
+        justifyContent: 'center',
         width: '100%',
         boxSizing: 'border-box'
     };
@@ -33,33 +32,34 @@ const Navbar = () => {
     const containerStyle = {
         display: 'flex',
         alignItems: 'center',
-        justifyContent: 'space-between',
-        width: isScrolled ? 'auto' : '100%',
-        maxWidth: isScrolled ? '800px' : 'none',
+        width: '100%',
+        maxWidth: isScrolled ? '800px' : '1200px',
         padding: isScrolled ? '12px 24px' : '0',
         borderRadius: isScrolled ? '50px' : '0',
         background: isScrolled 
             ? 'rgba(255, 255, 255, 0.1)' 
             : 'transparent',
         backdropFilter: isScrolled ? 'blur(20px)' : 'none',
-        // border: isScrolled ? '1px solid rgba(255, 255, 255, 0.2)' : 'none',
         boxShadow: isScrolled 
             ? '0 8px 32px rgba(0, 0, 0, 0.1)' 
             : 'none',
-        transition: 'color 0.3s ease, transform 0.3s ease',
-        gap: isScrolled ? '30px' : '0'
+        transition: 'all 1.2s cubic-bezier(0.4, 0, 0.2, 1)',
+        position: 'relative',
+        height: '60px'
     };
 
     const logoStyle = {
-        order: isScrolled ? 1 : 1,
-        transition: 'color 0.3s ease, transform 0.3s ease',
-        transform: isScrolled ? 'translateX(0)' : 'translateX(0)'
+        position: 'absolute',
+        left: '0',
+        transition: 'all 1.2s cubic-bezier(0.4, 0, 0.2, 1)',
+        zIndex: 1,
+        transform: isScrolled ? 'translateX(40px)' : 'translateX(0)'
     };
 
     const logoImageStyle = {
         height: '40px',
         width: 'auto',
-        filter: 'brightness(0) invert(1)' // Makes the logo white
+        filter: 'brightness(0) invert(1)'
     };
 
     const logoTextStyle = {
@@ -76,16 +76,22 @@ const Navbar = () => {
         listStyle: 'none',
         margin: 0,
         padding: 0,
-        order: isScrolled ? 2 : 2,
-        transition: 'color 0.3s ease, transform 0.3s ease'
+        position: 'absolute',
+        left: '50%',
+        transform: 'translateX(-50%)',
+        transition: 'all 1.2s cubic-bezier(0.4, 0, 0.2, 1)',
+        zIndex: 1
     };
 
     const rightSectionStyle = {
+        position: 'absolute',
+        right: '0',
         display: 'flex',
         alignItems: 'center',
         gap: '20px',
-        order: isScrolled ? 3 : 3,
-        transition: 'color 0.3s ease, transform 0.3s ease'
+        transition: 'all 1.2s cubic-bezier(0.4, 0, 0.2, 1)',
+        zIndex: 1,
+        transform: isScrolled ? 'translateX(-40px)' : 'translateX(0)'
     };
 
     const linkStyle = {
@@ -99,7 +105,6 @@ const Navbar = () => {
         cursor: 'pointer'
     };
 
-
     const buttonStyle = {
         backgroundColor: 'white',
         color: '#333',
@@ -111,12 +116,7 @@ const Navbar = () => {
         transition: 'all 0.3s ease',
         border: 'none',
         cursor: 'pointer',
-        fontFamily: 'Arial, sans-serif',
-        ':hover': {
-            backgroundColor: '#f0f0f0',
-            transform: 'translateY(-2px)',
-            boxShadow: '0 4px 12px rgba(0, 0, 0, 0.2)'
-        }
+        fontFamily: 'Arial, sans-serif'
     };
 
     return (
