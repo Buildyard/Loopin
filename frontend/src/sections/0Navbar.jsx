@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Button } from '@mui/material';
+import Logo from '../assets/logo1.svg'; 
 
 const Navbar = () => {
     const [isScrolled, setIsScrolled] = useState(false);
@@ -20,7 +21,7 @@ const Navbar = () => {
         left: 0,
         right: 0,
         zIndex: 9999,
-        transition: 'all 0.5s cubic-bezier(0.4, 0, 0.2, 1)',
+        transition: 'color 0.3s ease, transform 0.3s ease',
         padding: isScrolled ? '10px 20px' : '20px 40px',
         display: 'flex',
         alignItems: 'center',
@@ -41,17 +42,17 @@ const Navbar = () => {
             ? 'rgba(255, 255, 255, 0.1)' 
             : 'transparent',
         backdropFilter: isScrolled ? 'blur(20px)' : 'none',
-        border: isScrolled ? '1px solid rgba(255, 255, 255, 0.2)' : 'none',
+        // border: isScrolled ? '1px solid rgba(255, 255, 255, 0.2)' : 'none',
         boxShadow: isScrolled 
             ? '0 8px 32px rgba(0, 0, 0, 0.1)' 
             : 'none',
-        transition: 'all 0.5s cubic-bezier(0.4, 0, 0.2, 1)',
+        transition: 'color 0.3s ease, transform 0.3s ease',
         gap: isScrolled ? '30px' : '0'
     };
 
     const logoStyle = {
         order: isScrolled ? 1 : 1,
-        transition: 'all 0.5s cubic-bezier(0.4, 0, 0.2, 1)',
+        transition: 'color 0.3s ease, transform 0.3s ease',
         transform: isScrolled ? 'translateX(0)' : 'translateX(0)'
     };
 
@@ -76,7 +77,7 @@ const Navbar = () => {
         margin: 0,
         padding: 0,
         order: isScrolled ? 2 : 2,
-        transition: 'all 0.5s cubic-bezier(0.4, 0, 0.2, 1)'
+        transition: 'color 0.3s ease, transform 0.3s ease'
     };
 
     const rightSectionStyle = {
@@ -84,7 +85,7 @@ const Navbar = () => {
         alignItems: 'center',
         gap: '20px',
         order: isScrolled ? 3 : 3,
-        transition: 'all 0.5s cubic-bezier(0.4, 0, 0.2, 1)'
+        transition: 'color 0.3s ease, transform 0.3s ease'
     };
 
     const linkStyle = {
@@ -98,12 +99,6 @@ const Navbar = () => {
         cursor: 'pointer'
     };
 
-    const linkHoverStyle = {
-        ':hover': {
-            color: '#f0f0f0',
-            transform: 'translateY(-2px)'
-        }
-    };
 
     const buttonStyle = {
         backgroundColor: 'white',
@@ -130,10 +125,8 @@ const Navbar = () => {
                 {/* Logo Section */}
                 <div style={logoStyle}>
                     <a href="/" style={logoTextStyle}>
-                        Loopin
+                        <img src={Logo} alt="Loopin Logo" style={logoImageStyle} />
                     </a>
-                    {/* If you have a logo image, uncomment below and comment the text above */}
-                    {/* <img src="/path-to-your-logo.png" alt="Loopin Logo" style={logoImageStyle} /> */}
                 </div>
 
                 {/* Middle Navigation Links */}
