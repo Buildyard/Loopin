@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { Button } from '@mui/material';
 import Logo from '../assets/logo1.svg'; 
 
 const Navbar = () => {
