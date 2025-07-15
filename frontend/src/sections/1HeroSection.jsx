@@ -1,9 +1,11 @@
 import React from 'react';
+import { Box, Typography, Container, Grid } from '@mui/material';
 import background_video from '../assets/hero_background.mp4';
 
 const HeroSection = () => {
   return (
-    <div style={{ position: 'relative', height: '100vh', overflow: 'hidden' }}>
+    <Box sx={{ position: 'relative', height: '100vh', overflow: 'hidden' }}>
+      {/* Background Video */}
       <video
         autoPlay
         loop
@@ -22,9 +24,9 @@ const HeroSection = () => {
         <source src={background_video} type="video/mp4" />
       </video>
 
-      {/* Dark overlay for better text visibility */}
-      <div
-        style={{
+      {/* Dark Overlay */}
+      <Box
+        sx={{
           position: 'absolute',
           top: 0,
           left: 0,
@@ -35,22 +37,22 @@ const HeroSection = () => {
         }}
       />
 
-      {/* Text Content Container */}
-      <div
-        style={{
+      {/* Text Content */}
+      <Container
+        sx={{
           position: 'relative',
           height: '100%',
-          display: 'flex',
-          flexDirection: 'column',
-          justifyContent: 'space-between',
-          padding: '60px 40px',
           zIndex: 2,
           color: 'white',
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'flex-end',
+          py: { xs: 6, md: 8 },
         }}
       >
-        {/* Center Text - Biggest */}
-        <div
-          style={{
+        {/* Center Text */}
+        <Box
+          sx={{
             position: 'absolute',
             top: '50%',
             left: '50%',
@@ -60,107 +62,77 @@ const HeroSection = () => {
             width: '100%',
           }}
         >
-          <h1
-            style={{
-              fontWeight: 'bold',
-              marginBottom: '16px',
+          <Typography
+            variant="h4"
+            sx={{
+              mb: 2,
               textDecoration: 'underline',
               textDecorationColor: '#fff',
-              textDecorationThickness: '3px',
               textUnderlineOffset: '8px',
               lineHeight: 1.2,
             }}
           >
-            Support Smarter, Scal Simpler
-          </h1>
-          <p
-            style={{
-              fontSize: 'clamp(1.1rem, 2.5vw, 1.5rem)',
+            Support Smarter, Scale Simpler
+          </Typography>
+          <Typography
+            variant="body1"
+            sx={{
               lineHeight: 1.6,
               opacity: 0.9,
               maxWidth: '600px',
-              margin: '0 auto',
+              mx: 'auto',
             }}
           >
             Give your customers instant, accurate, and action-driven responses powered by your business context.
-          </p>
-        </div>
+          </Typography>
+        </Box>
 
-        {/* Bottom Section Container */}
-        <div
-          style={{
-            display: 'flex',
-            justifyContent: 'space-between',
-            alignItems: 'flex-end',
-            gap: '40px',
-            flexWrap: 'wrap',
-          }}
-        >
-          {/* Bottom Left Text */}
-          <div
-            style={{
-              flex: 1,
-              minWidth: '280px',
-              maxWidth: '400px',
-            }}
-          >
-            <h4
-              style={{
-                fontWeight: 'bold',
-                marginBottom: '8px',
+        {/* Bottom Left and Right Texts */}
+        <Grid container spacing={4} sx={{ mt: 'auto' }}>
+          {/* Bottom Left */}
+          <Grid item xs={12} sx={{ position: 'absolute', left: 0, bottom: 50}}>
+            <Box sx={{ maxWidth: '400px' }}>
+            <Typography
+              variant="h6"
+              sx={{
+                mb: 1,
                 textDecoration: 'underline',
                 textDecorationColor: '#fff',
-                textDecorationThickness: '2px',
                 textUnderlineOffset: '6px',
                 lineHeight: 1.3,
               }}
             >
               Trusted by Growing Businesses
-            </h4>
-            <p
-              style={{
-                lineHeight: 1.5,
-                opacity: 0.85,
-              }}
-            >
+            </Typography>
+            <Typography variant="body1" sx={{ opacity: 0.85 }}>
               Reduce support volume and resolve issues faster with AI tuned to your domain.
-            </p>
-          </div>
+            </Typography>
+            </Box>
+          </Grid>
 
-          {/* Bottom Right Text */}
-          <div
-            style={{
-              flex: 1,
-              minWidth: '280px',
-              maxWidth: '400px',
-              textAlign: 'right',
-            }}
-          >
-            <h4
-              style={{
-                fontWeight: 'bold',
-                marginBottom: '8px',
+          {/* Bottom Right */}
+          <Grid item xs={12} textAlign={{ xs: 'right', position: 'absolute', right: 0, bottom: 50 }} >
+            <Box sx={{ maxWidth: '400px', ml: 'auto' }}>
+            <Typography
+              variant="h6"
+              sx={{
+                mb: 1,
                 textDecoration: 'underline',
                 textDecorationColor: '#fff',
-                textDecorationThickness: '2px',
                 textUnderlineOffset: '6px',
                 lineHeight: 1.3,
               }}
             >
               More Than Just a Chatbot
-            </h4>
-            <p
-              style={{
-                lineHeight: 1.5,
-                opacity: 0.85,
-              }}
-            >
+            </Typography>
+            <Typography variant="body1" sx={{ opacity: 0.85, lineHeight: 1.5, }}>
               Trigger actions, fill forms, and navigate users—right from the conversation.
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
+            </Typography>
+            </Box>
+          </Grid>
+        </Grid>
+      </Container>
+    </Box>
   );
 };
 

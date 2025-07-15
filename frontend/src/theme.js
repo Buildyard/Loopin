@@ -2,19 +2,44 @@ import { createTheme } from '@mui/material/styles';
 
 const theme = createTheme({
   typography: {
-    fontFamily: `'Poppins', 'Roboto', 'Helvetica', 'Arial', sans-serif`, // your font stack
-    h1: { fontWeight: 700 },
-    h2: { fontWeight: 600 },
-    body1: { fontSize: '1rem' },
-    // You can customize each variant (h1-h6, body1, subtitle1, etc.)
+    fontFamily: `'Roboto', 'Helvetica', 'Arial', sans-serif`, // base fallback
+    h1: {
+      fontFamily: `'Manufacturing Consent'`,
+      fontWeight: 300,
+    },
+    h2: {
+      fontFamily: `'Poppins', 'Helvetica', 'Arial', sans-serif`,
+      fontWeight: 300,
+    },
+    h3: {
+      fontFamily: `'Poppins', 'Helvetica', 'Arial', sans-serif`,
+      fontWeight: 300,
+    },
+    h4: {
+      fontFamily: `'Poppins', 'Helvetica', 'Arial', sans-serif`,
+      fontWeight: 300,
+    },
+    h5: {
+      fontFamily: `'Roboto', 'Helvetica', 'Arial', sans-serif`,
+      fontWeight: 300,
+    },
+    h6: {
+      fontFamily: `'Roboto', 'Helvetica', 'Arial', sans-serif`,
+      fontWeight: 300,
+    },
+    body1: {
+      fontFamily: `'Roboto', 'Helvetica', 'Arial', sans-serif`,
+      fontWeight: 300,
+      fontSize: '1rem',
+    },
   },
   palette: {
-    mode: 'light', // or 'dark'
+    mode: 'light',
     primary: {
-      main: '#1976d2', // your primary color
+      main: '#1976d2',
     },
     secondary: {
-      main: '#dc004e', // your secondary color
+      main: '#dc004e',
     },
     background: {
       default: '#f4f6f8',
