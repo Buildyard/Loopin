@@ -11,7 +11,7 @@ const Home = () => {
         <HeroSection />
       </div>
       <div style={{ position: 'relative', zIndex: 2 }}>
-        <div style={{ height: '100vh' }}></div>
+        <div style={{ height: '150vh', overflow: 'hidden' }}></div>
         <div id='offerings'>
           <OfferingsSection />
         </div>

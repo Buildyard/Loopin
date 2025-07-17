@@ -24,7 +24,7 @@ const HeroSection = () => {
   const videoOpacity = 1 - scrollPosition * 0.5; // Video fades out
   const textOpacity = 1 - scrollPosition; // Paragraphs fade out
   const underlineOpacity = 1 - scrollPosition; // Underlines fade out
-  const headingScale = 1 + scrollPosition * 0.2; // Headings scale up
+  const headingScale = 1 + scrollPosition * 0.6; // Headings scale up
 
   return (
     <Box sx={{ position: 'relative', height: '100vh', overflow: 'hidden' }}>
@@ -84,7 +84,7 @@ const HeroSection = () => {
             textAlign: 'center',
             maxWidth: '800px',
             width: '100%',
-            transition: 'transform 0.1s ease-out',
+            transition: 'transform 0.5s ease-out',
           }}
         >
           <Typography
@@ -125,7 +125,7 @@ const HeroSection = () => {
                   textDecorationColor: `rgba(255, 255, 255, ${underlineOpacity})`,
                   textUnderlineOffset: '6px',
                   lineHeight: 1.3,
-                  transform: `scale(${headingScale})`,
+                  // transform: `scale(${headingScale})`,
                   transition: 'transform 0.1s ease-out',
                 }}
               >
@@ -148,7 +148,7 @@ const HeroSection = () => {
                   textDecorationColor: `rgba(255, 255, 255, ${underlineOpacity})`,
                   textUnderlineOffset: '6px',
                   lineHeight: 1.3,
-                  transform: `scale(${headingScale})`,
+                  // transform: `scale(${headingScale})`,
                   transition: 'transform 0.1s ease-out',
                 }}
               >
