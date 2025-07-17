@@ -6,8 +6,8 @@
 
 const ImportantNote = () => {
   return(<>
-  <div style={{ height: '100vh', backgroundColor: '#f0f0f0' }}> 
-  <h2>ImportantNote Section</h2>
+  <div style={{ height: '100vh', backgroundColor: 'black' }}> 
+  {/* <h2 style={{color: 'white'}}>ImportantNote Section</h2> */}
   </div>
   </>);
 }

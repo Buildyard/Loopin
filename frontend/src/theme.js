@@ -51,8 +51,8 @@ const theme = createTheme({
     },
   },
   background: {
-    light: '#CAD1FF',
-    dark: '#180047',
+    light: 'white',
+    dark: 'black',
   }
 });
 
