@@ -50,6 +50,10 @@ const theme = createTheme({
       secondary: '#555',
     },
   },
+  background: {
+    light: '#CAD1FF',
+    dark: '#180047',
+  }
 });
 
 export default theme;
