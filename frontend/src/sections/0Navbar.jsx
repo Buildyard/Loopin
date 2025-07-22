@@ -3,7 +3,7 @@ import Logo from '../assets/logo2.svg';
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
-    const [isBgDark, setIsBgDark] = useState(false);
+    const [isBgDark, setIsBgDark] = useState(true);
 
   useEffect(() => {
     const handleScroll = () => {
