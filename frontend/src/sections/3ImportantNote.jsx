@@ -24,15 +24,15 @@ const ImportantNote = () => {
 
   // List of phrases to display
   const phrases = [
-    'oklch()', 'scroll()', 'text-box-trim', 'pow()', '@property', 'top-layer',
-    '@view-transition', 'var()', 'clamp()', 'view()', 'Important Note', '@layer',
-    '@swash', 'subgrid', 'in oklab', ':popover-open', 'abs()', 'sin()', ':has()',
-    '::marker', '1cap', 'scrollbar-color', 'scroll-timeline', 'view-timeline',
-    'overlay', 'scale', 'ascent-override', 'initial-letter', 'inset', '@container',
-    'accent-color', 'color-mix()', '@scope', '@starting-style', 'override-colors',
-    'anchor()', 'scroll-snap', '::backdrop', '::cue', ':focus-visible', ':user-valid',
-    ':fullscreen', ':dir()', 'caret-color', 'aspect-ratio', 'cross-fade()',
-    'image-set()', 'env()', 'place-content', 'gap'
+    'context memory', 'widget ready', 'API-first', 'no retraining', 'self-learning', 'chat triggers',
+    'analytics dashboard', 'State of the art models', 'actionable AI', 'fills forms', 'Customer Support, Evolved', 'quick setup',
+    'multichannel', 'lightweight', 'custom flows', 'embed-ready', 'redirects', 'dynamic data',
+    'plug & play', 'webhook call', 'auto-summary', 'scalable', 'smart reroute', 'integrate once',
+    'low-code config', 'relevance boost', 'SDK Available', 'intent detection', 'enterprise-ready',
+    'seamless UX', 'context override', 'session memory', 'low latency', 'bot agent', 'data-aware',
+    'Secured', 'UX control', 'response tuning', 'frontend hooks', 'live preview', 'high uptime',
+    'air-tight auth', 'react ready', 'feedback loops', 'human handoff', 'trusted by teams',
+    'data sync', 'low maintenance', 'works anywhere'
   ];
 
   // Animation ranges for each phrase
@@ -49,7 +49,7 @@ const ImportantNote = () => {
 
   // Map phrases to items with grid positions and animation ranges
   const items = phrases.map((phrase, index) => ({
-    content: index === 10 ? <b style={{ fontSize: '15vmin' }}>{phrase}</b> : phrase,
+    content: index === 10 ? <b style={{ fontSize: '10vmin' }}>{phrase}</b> : phrase,
     gridRow: `${Math.floor(index / 4) % 4 + 1}`,
     gridColumn: `${(index % 4) + 1}`,
     animationRange: animationRanges[index] || '0% 100%', // Fallback for extra items

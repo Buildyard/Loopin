@@ -18,7 +18,7 @@ const Home = () => {
         <div id="important">
         <ImportantNote />
         {/* Spacer to provide scrollable space for the animation */}
-        <div style={{ height: '300vh' }}></div>
+        <div style={{ height: '100vh' }}></div>
       </div>
         <div id='reviews'>
           <ReviewsSection />

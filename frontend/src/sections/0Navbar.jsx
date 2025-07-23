@@ -16,8 +16,8 @@ const Navbar = () => {
       // Calculate thresholds in pixels based on vh
       const threshold1 = 150 * vh; // 150vh
       const threshold2 = 550 * vh; // 150vh + 400vh
-      const threshold3 = 650 * vh; // 450vh + 100vh
-      const threshold4 = 750 * vh; // 550vh + 100vh
+      const threshold3 = 750 * vh; // 550vh + 200vh
+      const threshold4 = 850 * vh; // 750vh + 100vh
 
       // Set isBgDark based on scroll position to control colors
       if (scrollTop < threshold1) {
