@@ -84,7 +84,7 @@ const ImportantNote = () => {
               fontWeight: 'lighter',
               whiteSpace: 'nowrap',
               animation: 'zoom-in linear both',
-              animationTimeline: 'scroll(root block)',
+              animationTimeline: 'view(block)', // Changed from 'scroll(root block)'
               animationRange: item.animationRange,
               color: 'white',
             }}
