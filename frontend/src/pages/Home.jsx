@@ -15,9 +15,11 @@ const Home = () => {
         <div id='offerings'>
           <OfferingsSection />
         </div>
-        <div id='important'>
-          <ImportantNote />
-        </div>
+        <div id="important">
+        <ImportantNote />
+        {/* Spacer to provide scrollable space for the animation */}
+        <div style={{ height: '300vh' }}></div>
+      </div>
         <div id='reviews'>
           <ReviewsSection />
         </div>
