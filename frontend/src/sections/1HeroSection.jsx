@@ -97,7 +97,7 @@ const HeroSection = () => {
               lineHeight: 1.2,
             }}
           >
-            Support Smarter, Scale Simpler
+            Support Smarter, Scale Simpler!
           </Typography>
           <Typography
             variant="body1"
