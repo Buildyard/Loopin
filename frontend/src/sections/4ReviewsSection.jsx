@@ -103,6 +103,16 @@ const ReviewsSection = () => {
           height: 100vh;
         }
       }
+      @keyframes center-position {
+        0% {
+          top: 0%;
+          left: 0%;
+        }
+        100% {
+          top: 50%;
+          left: 50%;
+        }
+      }
       @keyframes shrink-text {
         0%,
         10% {
@@ -128,10 +138,10 @@ const ReviewsSection = () => {
             view-timeline-name: --runner;
           }
           .content .scaler > * {
-            animation-name: scale-x, scale-y;
+            animation-name: scale-x, scale-y, center-position;
             animation-fill-mode: both;
-            animation-timing-function: var(--power-2-out), var(--power-1-out);
-            animation-timeline: --runner, --runner;
+            animation-timing-function: var(--power-2-out), var(--power-1-out), var(--power-2-out);
+            animation-timeline: --runner, --runner, --runner;
             animation-range: entry 100% exit -20%;
           }
           .content .scaler .center-review-quote {
@@ -195,8 +205,8 @@ const ReviewsSection = () => {
       }
       .scaler > * {
         position: absolute;
-        top: 50%;
-        left: 50%;
+        top: 0%;
+        left: 0%;
         transform: translate(-50%, -50%);
         width: 100%;
         height: 100%;
@@ -300,8 +310,8 @@ const ReviewsSection = () => {
       background: white;
     }
     .review-card {
-      background-color: black;
-      color: white;
+      background-color: white;
+      color: black;
       padding: 1rem;
       border-radius: 0.5rem;
       width: 100%;
@@ -323,8 +333,8 @@ const ReviewsSection = () => {
       font-size: 0.875rem;
     }
     .center-review-card {
-      background-color: black;
-      color: white;
+      background-color: white;
+      color: black;
       display: flex;
       flex-direction: column;
       justify-content: center;
