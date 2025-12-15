@@ -1,5 +1,4 @@
 import React from 'react';
-import { Box, Typography, Paper } from '@mui/material';
 
 const reviews = [
   { quote: "Our customer support has never been faster thanks to this AI!", author: "- Jane D., Support Manager" },
@@ -13,7 +12,11 @@ const reviews = [
   { quote: "Fills forms automatically – brilliant!", author: "- Tom H., User" },
   { quote: "Human handoff is smooth when needed.", author: "- Chris P., Team Lead" },
   { quote: "Secure and enterprise-ready out of the box.", author: "- Rachel G., CTO" },
-  { quote: "Plug & play setup in minutes.", author: "- Paul V., Founder" }
+  { quote: "Plug & play setup in minutes.", author: "- Paul V., Founder" },
+  { quote: "Best ROI we've seen in years.", author: "- Nina W., CFO" },
+  { quote: "Customer satisfaction scores jumped 40%.", author: "- Oscar T., Manager" },
+  { quote: "Multilingual support works flawlessly.", author: "- Petra S., Global Lead" },
+  { quote: "The AI adapts to our brand voice perfectly.", author: "- Quinn R., Brand Director" }
 ];
 
 const ReviewsSection = () => {
@@ -100,6 +103,24 @@ const ReviewsSection = () => {
           height: 100vh;
         }
       }
+      @keyframes shrink-text {
+        0%,
+        10% {
+          font-size: 2rem;
+        }
+        100% {
+          font-size: 1rem;
+        }
+      }
+      @keyframes shrink-author {
+        0%,
+        10% {
+          font-size: 1.5rem;
+        }
+        100% {
+          font-size: 0.875rem;
+        }
+      }
       @media (prefers-reduced-motion: no-preference) {
         @supports (animation-timeline: scroll()) and (animation-range: 0 100%) {
           .content-wrap {
@@ -111,6 +132,20 @@ const ReviewsSection = () => {
             animation-fill-mode: both;
             animation-timing-function: var(--power-2-out), var(--power-1-out);
             animation-timeline: --runner, --runner;
+            animation-range: entry 100% exit -20%;
+          }
+          .content .scaler .center-review-quote {
+            animation-name: shrink-text;
+            animation-fill-mode: both;
+            animation-timing-function: var(--power-2-out);
+            animation-timeline: --runner;
+            animation-range: entry 100% exit -20%;
+          }
+          .content .scaler .center-review-author {
+            animation-name: shrink-author;
+            animation-fill-mode: both;
+            animation-timing-function: var(--power-2-out);
+            animation-timeline: --runner;
             animation-range: entry 100% exit -20%;
           }
           .content .grid .layer {
@@ -125,6 +160,9 @@ const ReviewsSection = () => {
           }
           .content .grid .layer:nth-of-type(3) {
             animation-range: entry 100% exit -20%;
+          }
+          .content .grid .layer:nth-of-type(4) {
+            animation-range: entry 100% exit -30%;
           }
         }
       }
@@ -171,7 +209,7 @@ const ReviewsSection = () => {
         max-width: 100%;
         display: grid;
         grid-template-columns: repeat(4, 1fr);
-        grid-template-rows: repeat(3, 1fr);
+        grid-template-rows: repeat(4, 1fr);
         gap: var(--gap);
         margin: 0 auto;
         align-content: center;
@@ -205,6 +243,10 @@ const ReviewsSection = () => {
         grid-row: 3;
       }
       .grid .layer:nth-of-type(1) > div:nth-of-type(4) {
+        grid-column: 1;
+        grid-row: 4;
+      }
+      .grid .layer:nth-of-type(1) > div:nth-of-type(5) {
         grid-column: 4;
         grid-row: 1;
       }
@@ -217,12 +259,16 @@ const ReviewsSection = () => {
         grid-row: 3;
       }
       .grid .layer:nth-of-type(2) > div:nth-of-type(3) {
-        grid-column: 2;
-        grid-row: 1;
+        grid-column: 4;
+        grid-row: 4;
       }
       .grid .layer:nth-of-type(2) > div:nth-of-type(4) {
         grid-column: 2;
-        grid-row: 3;
+        grid-row: 1;
+      }
+      .grid .layer:nth-of-type(2) > div:nth-of-type(5) {
+        grid-column: 2;
+        grid-row: 4;
       }
       .grid .layer:nth-of-type(3) > div:nth-of-type(1) {
         grid-column: 2;
@@ -234,10 +280,18 @@ const ReviewsSection = () => {
       }
       .grid .layer:nth-of-type(3) > div:nth-of-type(3) {
         grid-column: 3;
+        grid-row: 4;
+      }
+      .grid .layer:nth-of-type(4) > div:nth-of-type(1) {
+        grid-column: 2;
         grid-row: 3;
       }
+      .grid .layer:nth-of-type(4) > div:nth-of-type(2) {
+        grid-column: 3;
+        grid-row: 2;
+      }
       .grid .scaler {
-        grid-area: 2 / 3;
+        grid-area: 3 / 3;
         position: relative;
       }
     }
@@ -276,25 +330,26 @@ const ReviewsSection = () => {
       justify-content: center;
       align-items: center;
       padding: 2rem;
-      border-radius: 0;
+      border-radius: 0.5rem;
     }
     .center-review-quote {
       font-style: italic;
       text-align: center;
       font-size: 2rem;
-      line-height: 1.4;
+      line-height: 1.5;
     }
     .center-review-author {
-      margin-top: 1rem;
+      margin-top: 0.5rem;
       font-weight: bold;
       font-size: 1.5rem;
     }
   `;
 
   const layerReviews = reviews.slice(1);
-  const layer1Reviews = layerReviews.slice(0, 4);
-  const layer2Reviews = layerReviews.slice(4, 8);
-  const layer3Reviews = layerReviews.slice(8, 11);
+  const layer1Reviews = layerReviews.slice(0, 5);
+  const layer2Reviews = layerReviews.slice(5, 10);
+  const layer3Reviews = layerReviews.slice(10, 13);
+  const layer4Reviews = layerReviews.slice(13, 15);
 
   return (
     <>
@@ -332,6 +387,20 @@ const ReviewsSection = () => {
             </div>
             <div className="layer">
               {layer3Reviews.map((review, index) => (
+                <div key={index}>
+                  <div className="review-card">
+                    <div className="review-quote">
+                      "{review.quote}"
+                    </div>
+                    <div className="review-author">
+                      {review.author}
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+            <div className="layer">
+              {layer4Reviews.map((review, index) => (
                 <div key={index}>
                   <div className="review-card">
                     <div className="review-quote">
