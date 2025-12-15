@@ -91,13 +91,13 @@ const ReviewsSection = () => {
       @keyframes scale-x {
         0%,
         10% {
-          width: calc(100vw - (2 * var(--gutter)));
+          width: 100vw;
         }
       }
       @keyframes scale-y {
         0%,
         10% {
-          height: calc(100vh - (2 * var(--gutter)));
+          height: 100vh;
         }
       }
       @media (prefers-reduced-motion: no-preference) {
@@ -133,12 +133,12 @@ const ReviewsSection = () => {
       :root {
         --container-width: 1600px;
         --gap: clamp(10px, 7.35vw, 80px);
-        --gutter: 2rem;
+        --gutter: 0;
       }
-      @media (max-width: 600px) {
-        :root {
-          --gutter: 1rem;
-        }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
       }
       .content {
         min-height: 100vh;
@@ -162,13 +162,13 @@ const ReviewsSection = () => {
         transform: translate(-50%, -50%);
         width: 100%;
         height: 100%;
-        border-radius: 1rem;
+        border-radius: 0;
       }
     }
     @layer grid {
       .grid {
         width: var(--container-width);
-        max-width: calc(100% - (2 * var(--gutter)));
+        max-width: 100%;
         display: grid;
         grid-template-columns: repeat(4, 1fr);
         grid-template-rows: repeat(3, 1fr);
@@ -245,6 +245,50 @@ const ReviewsSection = () => {
       overflow: clip;
       background: white;
     }
+    .review-card {
+      background-color: black;
+      color: white;
+      padding: 1rem;
+      border-radius: 0.5rem;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+    .review-quote {
+      font-style: italic;
+      text-align: center;
+      font-size: 1rem;
+      line-height: 1.5;
+    }
+    .review-author {
+      margin-top: 0.5rem;
+      font-weight: bold;
+      font-size: 0.875rem;
+    }
+    .center-review-card {
+      background-color: black;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 2rem;
+      border-radius: 0;
+    }
+    .center-review-quote {
+      font-style: italic;
+      text-align: center;
+      font-size: 2rem;
+      line-height: 1.4;
+    }
+    .center-review-author {
+      margin-top: 1rem;
+      font-weight: bold;
+      font-size: 1.5rem;
+    }
   `;
 
   const layerReviews = reviews.slice(1);
@@ -255,116 +299,64 @@ const ReviewsSection = () => {
   return (
     <>
       <style>{style}</style>
-      <Typography variant="h2" sx={{ p: 2, textAlign: 'center' }}>
-        Reviews Section
-      </Typography>
-      <Box className="content-wrap">
-        <Box className="content">
-          <Box className="grid">
-            <Box className="layer">
+      <div className="content-wrap">
+        <div className="content">
+          <div className="grid">
+            <div className="layer">
               {layer1Reviews.map((review, index) => (
                 <div key={index}>
-                  <Paper
-                    sx={{
-                      backgroundColor: 'black',
-                      color: 'white',
-                      p: 2,
-                      borderRadius: 1,
-                      width: '100%',
-                      height: '100%',
-                      display: 'flex',
-                      flexDirection: 'column',
-                      justifyContent: 'center',
-                      alignItems: 'center',
-                    }}
-                  >
-                    <Typography variant="body1" sx={{ fontStyle: 'italic', textAlign: 'center' }}>
+                  <div className="review-card">
+                    <div className="review-quote">
                       "{review.quote}"
-                    </Typography>
-                    <Typography variant="caption" sx={{ mt: 1, fontWeight: 'bold' }}>
+                    </div>
+                    <div className="review-author">
                       {review.author}
-                    </Typography>
-                  </Paper>
+                    </div>
+                  </div>
                 </div>
               ))}
-            </Box>
-            <Box className="layer">
+            </div>
+            <div className="layer">
               {layer2Reviews.map((review, index) => (
                 <div key={index}>
-                  <Paper
-                    sx={{
-                      backgroundColor: 'black',
-                      color: 'white',
-                      p: 2,
-                      borderRadius: 1,
-                      width: '100%',
-                      height: '100%',
-                      display: 'flex',
-                      flexDirection: 'column',
-                      justifyContent: 'center',
-                      alignItems: 'center',
-                    }}
-                  >
-                    <Typography variant="body1" sx={{ fontStyle: 'italic', textAlign: 'center' }}>
+                  <div className="review-card">
+                    <div className="review-quote">
                       "{review.quote}"
-                    </Typography>
-                    <Typography variant="caption" sx={{ mt: 1, fontWeight: 'bold' }}>
+                    </div>
+                    <div className="review-author">
                       {review.author}
-                    </Typography>
-                  </Paper>
+                    </div>
+                  </div>
                 </div>
               ))}
-            </Box>
-            <Box className="layer">
+            </div>
+            <div className="layer">
               {layer3Reviews.map((review, index) => (
                 <div key={index}>
-                  <Paper
-                    sx={{
-                      backgroundColor: 'black',
-                      color: 'white',
-                      p: 2,
-                      borderRadius: 1,
-                      width: '100%',
-                      height: '100%',
-                      display: 'flex',
-                      flexDirection: 'column',
-                      justifyContent: 'center',
-                      alignItems: 'center',
-                    }}
-                  >
-                    <Typography variant="body1" sx={{ fontStyle: 'italic', textAlign: 'center' }}>
+                  <div className="review-card">
+                    <div className="review-quote">
                       "{review.quote}"
-                    </Typography>
-                    <Typography variant="caption" sx={{ mt: 1, fontWeight: 'bold' }}>
+                    </div>
+                    <div className="review-author">
                       {review.author}
-                    </Typography>
-                  </Paper>
+                    </div>
+                  </div>
                 </div>
               ))}
-            </Box>
-            <Box className="scaler">
-              <Paper
-                sx={{
-                  backgroundColor: 'black',
-                  color: 'white',
-                  display: 'flex',
-                  flexDirection: 'column',
-                  justifyContent: 'center',
-                  alignItems: 'center',
-                  p: 4,
-                }}
-              >
-                <Typography variant="h4" sx={{ fontStyle: 'italic', textAlign: 'center' }}>
+            </div>
+            <div className="scaler">
+              <div className="center-review-card">
+                <div className="center-review-quote">
                   "{reviews[0].quote}"
-                </Typography>
-                <Typography variant="h6" sx={{ mt: 1, fontWeight: 'bold' }}>
+                </div>
+                <div className="center-review-author">
                   {reviews[0].author}
-                </Typography>
-              </Paper>
-            </Box>
-          </Box>
-        </Box>
-      </Box>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </>
   );
 };
