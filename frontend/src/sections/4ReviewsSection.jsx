@@ -1,12 +1,372 @@
+import React from 'react';
+import { Box, Typography, Paper } from '@mui/material';
 
-
-
+const reviews = [
+  { quote: "Our customer support has never been faster thanks to this AI!", author: "- Jane D., Support Manager" },
+  { quote: "Easy integration and powerful features. Highly recommend!", author: "- John S., CEO" },
+  { quote: "The chatbot understands context perfectly. Game-changer.", author: "- Alex R., Product Lead" },
+  { quote: "Saves us hours every day. Worth every penny.", author: "- Sarah K., Operations" },
+  { quote: "Seamless multichannel support. Our customers love it.", author: "- Mike L., Marketing" },
+  { quote: "Low latency responses make it feel human.", author: "- Emily T., Developer" },
+  { quote: "Analytics dashboard is insightful for improvements.", author: "- David B., Analyst" },
+  { quote: "No retraining needed – it learns on its own!", author: "- Lisa M., AI Specialist" },
+  { quote: "Fills forms automatically – brilliant!", author: "- Tom H., User" },
+  { quote: "Human handoff is smooth when needed.", author: "- Chris P., Team Lead" },
+  { quote: "Secure and enterprise-ready out of the box.", author: "- Rachel G., CTO" },
+  { quote: "Plug & play setup in minutes.", author: "- Paul V., Founder" }
+];
 
 const ReviewsSection = () => {
-  return(<>
-  <div style={{ height: '100vh', backgroundColor: 'white' }}> 
-  <h2>Reviews Section</h2>
-  </div>
-  </>);
-}
+  const style = `
+    @import url('https://unpkg.com/normalize.css') layer(normalize);
+    @layer scroll, setup, grid;
+    @layer scroll {
+      :root {
+        --power-1-out: linear(
+          0 0%,
+          0.0027 3.64%,
+          0.0106 7.29%,
+          0.0425 14.58%,
+          0.0957 21.87%,
+          0.1701 29.16%,
+          0.2477 35.19%,
+          0.3401 41.23%,
+          0.5982 55.18%,
+          0.7044 61.56%,
+          0.7987 68.28%,
+          0.875 75%,
+          0.9297 81.25%,
+          0.9687 87.5%,
+          0.9922 93.75%,
+          1 100%
+        );
+        --power-2-out: linear(
+          0 0%,
+          0.0036 9.62%,
+          0.0185 16.66%,
+          0.0489 23.03%,
+          0.0962 28.86%,
+          0.1705 34.93%,
+          0.269 40.66%,
+          0.3867 45.89%,
+          0.5833 52.95%,
+          0.683 57.05%,
+          0.7829 62.14%,
+          0.8621 67.46%,
+          0.8991 70.68%,
+          0.9299 74.03%,
+          0.9545 77.52%,
+          0.9735 81.21%,
+          0.9865 85%,
+          0.9949 89.15%,
+          1 100%
+        );
+        --sine: linear(
+          0 0%,
+          0.2861 18.47%,
+          0.4829 32.08%,
+          0.6437 44.52%,
+          0.7712 56.07%,
+          0.8722 67.47%,
+          0.9115 73.02%,
+          0.9434 78.49%,
+          0.9682 83.91%,
+          0.9859 89.3%,
+          0.9965 94.66%,
+          1 100%
+        );
+      }
+      @keyframes fade {
+        0%,
+        55% {
+          opacity: 0;
+        }
+      }
+      @keyframes reveal {
+        0%,
+        30% {
+          scale: 0;
+        }
+      }
+      @keyframes scale-x {
+        0%,
+        10% {
+          width: calc(100vw - (2 * var(--gutter)));
+        }
+      }
+      @keyframes scale-y {
+        0%,
+        10% {
+          height: calc(100vh - (2 * var(--gutter)));
+        }
+      }
+      @media (prefers-reduced-motion: no-preference) {
+        @supports (animation-timeline: scroll()) and (animation-range: 0 100%) {
+          .content-wrap {
+            min-height: 240vh;
+            view-timeline-name: --runner;
+          }
+          .content .scaler > * {
+            animation-name: scale-x, scale-y;
+            animation-fill-mode: both;
+            animation-timing-function: var(--power-2-out), var(--power-1-out);
+            animation-timeline: --runner, --runner;
+            animation-range: entry 100% exit -20%;
+          }
+          .content .grid .layer {
+            animation-name: fade, reveal;
+            animation-fill-mode: both;
+            animation-timing-function: var(--sine), var(--power-1-out);
+            animation-timeline: --runner, --runner;
+            animation-range: entry 100% exit 0%;
+          }
+          .content .grid .layer:nth-of-type(2) {
+            animation-range: entry 100% exit -10%;
+          }
+          .content .grid .layer:nth-of-type(3) {
+            animation-range: entry 100% exit -20%;
+          }
+        }
+      }
+    }
+    @layer setup {
+      :root {
+        --container-width: 1600px;
+        --gap: clamp(10px, 7.35vw, 80px);
+        --gutter: 2rem;
+      }
+      @media (max-width: 600px) {
+        :root {
+          --gutter: 1rem;
+        }
+      }
+      .content {
+        min-height: 100vh;
+        width: 100vw;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: sticky;
+        top: 0;
+      }
+      .scaler {
+        z-index: 2;
+        width: 100%;
+        height: 100%;
+        position: relative;
+      }
+      .scaler > * {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 100%;
+        height: 100%;
+        border-radius: 1rem;
+      }
+    }
+    @layer grid {
+      .grid {
+        width: var(--container-width);
+        max-width: calc(100% - (2 * var(--gutter)));
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: repeat(3, 1fr);
+        gap: var(--gap);
+        margin: 0 auto;
+        align-content: center;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+      .grid > .layer {
+        display: grid;
+        grid-column: 1 / -1;
+        grid-row: 1 / -1;
+        grid-template-columns: subgrid;
+        grid-template-rows: subgrid;
+      }
+      .grid .layer > div {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .grid .layer:nth-of-type(1) > div:nth-of-type(1) {
+        grid-column: 1;
+        grid-row: 1;
+      }
+      .grid .layer:nth-of-type(1) > div:nth-of-type(2) {
+        grid-column: 1;
+        grid-row: 2;
+      }
+      .grid .layer:nth-of-type(1) > div:nth-of-type(3) {
+        grid-column: 1;
+        grid-row: 3;
+      }
+      .grid .layer:nth-of-type(1) > div:nth-of-type(4) {
+        grid-column: 4;
+        grid-row: 1;
+      }
+      .grid .layer:nth-of-type(2) > div:nth-of-type(1) {
+        grid-column: 4;
+        grid-row: 2;
+      }
+      .grid .layer:nth-of-type(2) > div:nth-of-type(2) {
+        grid-column: 4;
+        grid-row: 3;
+      }
+      .grid .layer:nth-of-type(2) > div:nth-of-type(3) {
+        grid-column: 2;
+        grid-row: 1;
+      }
+      .grid .layer:nth-of-type(2) > div:nth-of-type(4) {
+        grid-column: 2;
+        grid-row: 3;
+      }
+      .grid .layer:nth-of-type(3) > div:nth-of-type(1) {
+        grid-column: 2;
+        grid-row: 2;
+      }
+      .grid .layer:nth-of-type(3) > div:nth-of-type(2) {
+        grid-column: 3;
+        grid-row: 1;
+      }
+      .grid .layer:nth-of-type(3) > div:nth-of-type(3) {
+        grid-column: 3;
+        grid-row: 3;
+      }
+      .grid .scaler {
+        grid-area: 2 / 3;
+        position: relative;
+      }
+    }
+    .content-wrap {
+      overflow: clip;
+      background: white;
+    }
+  `;
+
+  const layerReviews = reviews.slice(1);
+  const layer1Reviews = layerReviews.slice(0, 4);
+  const layer2Reviews = layerReviews.slice(4, 8);
+  const layer3Reviews = layerReviews.slice(8, 11);
+
+  return (
+    <>
+      <style>{style}</style>
+      <Typography variant="h2" sx={{ p: 2, textAlign: 'center' }}>
+        Reviews Section
+      </Typography>
+      <Box className="content-wrap">
+        <Box className="content">
+          <Box className="grid">
+            <Box className="layer">
+              {layer1Reviews.map((review, index) => (
+                <div key={index}>
+                  <Paper
+                    sx={{
+                      backgroundColor: 'black',
+                      color: 'white',
+                      p: 2,
+                      borderRadius: 1,
+                      width: '100%',
+                      height: '100%',
+                      display: 'flex',
+                      flexDirection: 'column',
+                      justifyContent: 'center',
+                      alignItems: 'center',
+                    }}
+                  >
+                    <Typography variant="body1" sx={{ fontStyle: 'italic', textAlign: 'center' }}>
+                      "{review.quote}"
+                    </Typography>
+                    <Typography variant="caption" sx={{ mt: 1, fontWeight: 'bold' }}>
+                      {review.author}
+                    </Typography>
+                  </Paper>
+                </div>
+              ))}
+            </Box>
+            <Box className="layer">
+              {layer2Reviews.map((review, index) => (
+                <div key={index}>
+                  <Paper
+                    sx={{
+                      backgroundColor: 'black',
+                      color: 'white',
+                      p: 2,
+                      borderRadius: 1,
+                      width: '100%',
+                      height: '100%',
+                      display: 'flex',
+                      flexDirection: 'column',
+                      justifyContent: 'center',
+                      alignItems: 'center',
+                    }}
+                  >
+                    <Typography variant="body1" sx={{ fontStyle: 'italic', textAlign: 'center' }}>
+                      "{review.quote}"
+                    </Typography>
+                    <Typography variant="caption" sx={{ mt: 1, fontWeight: 'bold' }}>
+                      {review.author}
+                    </Typography>
+                  </Paper>
+                </div>
+              ))}
+            </Box>
+            <Box className="layer">
+              {layer3Reviews.map((review, index) => (
+                <div key={index}>
+                  <Paper
+                    sx={{
+                      backgroundColor: 'black',
+                      color: 'white',
+                      p: 2,
+                      borderRadius: 1,
+                      width: '100%',
+                      height: '100%',
+                      display: 'flex',
+                      flexDirection: 'column',
+                      justifyContent: 'center',
+                      alignItems: 'center',
+                    }}
+                  >
+                    <Typography variant="body1" sx={{ fontStyle: 'italic', textAlign: 'center' }}>
+                      "{review.quote}"
+                    </Typography>
+                    <Typography variant="caption" sx={{ mt: 1, fontWeight: 'bold' }}>
+                      {review.author}
+                    </Typography>
+                  </Paper>
+                </div>
+              ))}
+            </Box>
+            <Box className="scaler">
+              <Paper
+                sx={{
+                  backgroundColor: 'black',
+                  color: 'white',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                  p: 4,
+                }}
+              >
+                <Typography variant="h4" sx={{ fontStyle: 'italic', textAlign: 'center' }}>
+                  "{reviews[0].quote}"
+                </Typography>
+                <Typography variant="h6" sx={{ mt: 1, fontWeight: 'bold' }}>
+                  {reviews[0].author}
+                </Typography>
+              </Paper>
+            </Box>
+          </Box>
+        </Box>
+      </Box>
+    </>
+  );
+};
+
 export default ReviewsSection;
