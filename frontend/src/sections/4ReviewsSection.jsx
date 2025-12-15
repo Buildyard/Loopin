@@ -1,5 +1,4 @@
 import React from 'react';
-
 const reviews = [
   { quote: "Our customer support has never been faster thanks to this AI!", author: "- Jane D., Support Manager" },
   { quote: "Easy integration and powerful features. Highly recommend!", author: "- John S., CEO" },
@@ -18,7 +17,25 @@ const reviews = [
   { quote: "Multilingual support works flawlessly.", author: "- Petra S., Global Lead" },
   { quote: "The AI adapts to our brand voice perfectly.", author: "- Quinn R., Brand Director" }
 ];
-
+const newReviews = [
+  { quote: "Incredible personalization for each user.", author: "- Anna L., UX Designer" },
+  { quote: "Handles peak traffic without breaking a sweat.", author: "- Ben M., SysAdmin" },
+  { quote: "Voice integration is spot on.", author: "- Clara O., Product Manager" },
+  { quote: "Reduces churn by engaging users proactively.", author: "- Dan P., Retention Specialist" },
+  { quote: "API is robust and well-documented.", author: "- Eve Q., Integrator" },
+  { quote: "Mobile app support is seamless.", author: "- Frank R., Mobile Dev" },
+  { quote: "Custom workflows automate everything.", author: "- Grace S., Ops Manager" },
+  { quote: "Data privacy compliance built-in.", author: "- Hank T., Compliance Officer" },
+  { quote: "Scales with our growth effortlessly.", author: "- Iris U., CEO" },
+  { quote: "Fun to use, boosts team morale.", author: "- Jack V., HR" },
+  { quote: "Predictive analytics prevent issues.", author: "- Kara W., Data Scientist" },
+  { quote: "Easy A/B testing for responses.", author: "- Leo X., Marketer" },
+  { quote: "Integrates with all our tools.", author: "- Mia Y., Tech Lead" },
+  { quote: "Cost-effective alternative to hiring.", author: "- Noah Z., CFO" },
+  { quote: "Constant updates keep it fresh.", author: "- Opal A., Innovator" },
+  { quote: "Community support is amazing.", author: "- Pete B., User Advocate" }
+];
+const allReviews = [...reviews, ...newReviews];
 const ReviewsSection = () => {
   const style = `
     @import url('https://unpkg.com/normalize.css') layer(normalize);
@@ -131,10 +148,20 @@ const ReviewsSection = () => {
           font-size: 0.875rem;
         }
       }
+      @keyframes shift1 {
+        to {
+          --hx1: -100%;
+        }
+      }
+      @keyframes shift2 {
+        to {
+          --hx2: 0%;
+        }
+      }
       @media (prefers-reduced-motion: no-preference) {
         @supports (animation-timeline: scroll()) and (animation-range: 0 100%) {
           .content-wrap {
-            min-height: 240vh;
+            min-height: 340vh;
             view-timeline-name: --runner;
           }
           .content .scaler > * {
@@ -142,42 +169,66 @@ const ReviewsSection = () => {
             animation-fill-mode: both;
             animation-timing-function: var(--power-2-out), var(--power-1-out), var(--power-2-out);
             animation-timeline: --runner, --runner, --runner;
-            animation-range: entry 100% exit -20%;
+            animation-range: entry 100% exit -120%;
           }
           .content .scaler .center-review-quote {
             animation-name: shrink-text;
             animation-fill-mode: both;
             animation-timing-function: var(--power-2-out);
             animation-timeline: --runner;
-            animation-range: entry 100% exit -20%;
+            animation-range: entry 100% exit -120%;
           }
           .content .scaler .center-review-author {
             animation-name: shrink-author;
             animation-fill-mode: both;
             animation-timing-function: var(--power-2-out);
             animation-timeline: --runner;
-            animation-range: entry 100% exit -20%;
+            animation-range: entry 100% exit -120%;
           }
           .content .grid .layer {
             animation-name: fade, reveal;
             animation-fill-mode: both;
             animation-timing-function: var(--sine), var(--power-1-out);
             animation-timeline: --runner, --runner;
-            animation-range: entry 100% exit 0%;
+            animation-range: entry 100% exit -100%;
           }
           .content .grid .layer:nth-of-type(2) {
-            animation-range: entry 100% exit -10%;
+            animation-range: entry 100% exit -110%;
           }
           .content .grid .layer:nth-of-type(3) {
-            animation-range: entry 100% exit -20%;
+            animation-range: entry 100% exit -120%;
           }
           .content .grid .layer:nth-of-type(4) {
-            animation-range: entry 100% exit -30%;
+            animation-range: entry 100% exit -130%;
+          }
+          .content .grid.first {
+            animation-name: shift1;
+            animation-fill-mode: both;
+            animation-timing-function: var(--power-2-out);
+            animation-timeline: --runner;
+            animation-range: exit -130% exit -30%;
+          }
+          .content .grid.second {
+            animation-name: shift2;
+            animation-fill-mode: both;
+            animation-timing-function: var(--power-2-out);
+            animation-timeline: --runner;
+            animation-range: exit -130% exit -30%;
           }
         }
       }
     }
     @layer setup {
+      @property --hx1 {
+        syntax: "<percentage>";
+        initial-value: 0%;
+        inherits: false;
+      }
+      @property --hx2 {
+        syntax: "<percentage>";
+        initial-value: 100%;
+        inherits: false;
+      }
       :root {
         --container-width: 1600px;
         --gap: clamp(10px, 7.35vw, 80px);
@@ -212,6 +263,15 @@ const ReviewsSection = () => {
         height: 100%;
         border-radius: 0;
       }
+      .grid.first {
+        --hx: var(--hx1);
+      }
+      .grid.second {
+        --hx: var(--hx2);
+      }
+      .no-anim {
+        animation-name: none !important;
+      }
     }
     @layer grid {
       .grid {
@@ -226,7 +286,7 @@ const ReviewsSection = () => {
         position: absolute;
         top: 50%;
         left: 50%;
-        transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%) translateX(var(--hx, 0%));
       }
       .grid > .layer {
         display: grid;
@@ -354,82 +414,67 @@ const ReviewsSection = () => {
       font-size: 1.5rem;
     }
   `;
-
-  const layerReviews = reviews.slice(1);
-  const layer1Reviews = layerReviews.slice(0, 5);
-  const layer2Reviews = layerReviews.slice(5, 10);
-  const layer3Reviews = layerReviews.slice(10, 13);
-  const layer4Reviews = layerReviews.slice(13, 15);
-
+  const firstCenter = allReviews[0];
+  const firstLayerReviews = allReviews.slice(1, 16);
+  const firstLayer1Reviews = firstLayerReviews.slice(0, 5);
+  const firstLayer2Reviews = firstLayerReviews.slice(5, 10);
+  const firstLayer3Reviews = firstLayerReviews.slice(10, 13);
+  const firstLayer4Reviews = firstLayerReviews.slice(13, 15);
+  const secondCenter = allReviews[16];
+  const secondLayerReviews = allReviews.slice(17, 32);
+  const secondLayer1Reviews = secondLayerReviews.slice(0, 5);
+  const secondLayer2Reviews = secondLayerReviews.slice(5, 10);
+  const secondLayer3Reviews = secondLayerReviews.slice(10, 13);
+  const secondLayer4Reviews = secondLayerReviews.slice(13, 15);
+  const renderLayers = (layerReviews, layerNum) => (
+    <div className={`layer layer-${layerNum}`}>
+      {layerReviews.map((review, index) => (
+        <div key={index}>
+          <div className="review-card">
+            <div className="review-quote">
+              "{review.quote}"
+            </div>
+            <div className="review-author">
+              {review.author}
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  );
   return (
     <>
       <style>{style}</style>
       <div className="content-wrap">
         <div className="content">
-          <div className="grid">
-            <div className="layer">
-              {layer1Reviews.map((review, index) => (
-                <div key={index}>
-                  <div className="review-card">
-                    <div className="review-quote">
-                      "{review.quote}"
-                    </div>
-                    <div className="review-author">
-                      {review.author}
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-            <div className="layer">
-              {layer2Reviews.map((review, index) => (
-                <div key={index}>
-                  <div className="review-card">
-                    <div className="review-quote">
-                      "{review.quote}"
-                    </div>
-                    <div className="review-author">
-                      {review.author}
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-            <div className="layer">
-              {layer3Reviews.map((review, index) => (
-                <div key={index}>
-                  <div className="review-card">
-                    <div className="review-quote">
-                      "{review.quote}"
-                    </div>
-                    <div className="review-author">
-                      {review.author}
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-            <div className="layer">
-              {layer4Reviews.map((review, index) => (
-                <div key={index}>
-                  <div className="review-card">
-                    <div className="review-quote">
-                      "{review.quote}"
-                    </div>
-                    <div className="review-author">
-                      {review.author}
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
+          <div className="grid first">
+            {renderLayers(firstLayer1Reviews, 1)}
+            {renderLayers(firstLayer2Reviews, 2)}
+            {renderLayers(firstLayer3Reviews, 3)}
+            {renderLayers(firstLayer4Reviews, 4)}
             <div className="scaler">
               <div className="center-review-card">
                 <div className="center-review-quote">
-                  "{reviews[0].quote}"
+                  "{firstCenter.quote}"
                 </div>
                 <div className="center-review-author">
-                  {reviews[0].author}
+                  {firstCenter.author}
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="grid second">
+            {renderLayers(secondLayer1Reviews, 1)}
+            {renderLayers(secondLayer2Reviews, 2)}
+            {renderLayers(secondLayer3Reviews, 3)}
+            {renderLayers(secondLayer4Reviews, 4)}
+            <div className="scaler">
+              <div className="center-review-card">
+                <div className="center-review-quote">
+                  "{secondCenter.quote}"
+                </div>
+                <div className="center-review-author">
+                  {secondCenter.author}
                 </div>
               </div>
             </div>
@@ -439,5 +484,4 @@ const ReviewsSection = () => {
     </>
   );
 };
-
 export default ReviewsSection;
