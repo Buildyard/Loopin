@@ -1,7 +1,7 @@
 import React from 'react';
 const reviews = [
-  { quote: "Our customer support has never been faster thanks to this AI!", author: "- Jane D., Support Manager" },
   { quote: "Easy integration and powerful features. Highly recommend!", author: "- John S., CEO" },
+  { quote: "Our customer support has never been faster thanks to this AI!", author: "- Jane D., Support Manager" },
   { quote: "The chatbot understands context perfectly. Game-changer.", author: "- Alex R., Product Lead" },
   { quote: "Saves us hours every day. Worth every penny.", author: "- Sarah K., Operations" },
   { quote: "Seamless multichannel support. Our customers love it.", author: "- Mike L., Marketing" },
@@ -150,7 +150,7 @@ const ReviewsSection = () => {
       }
       @keyframes shift1 {
         to {
-          --hx1: -100%;
+          --hx1: -105%;
         }
       }
       @keyframes shift2 {
@@ -226,7 +226,7 @@ const ReviewsSection = () => {
       }
       @property --hx2 {
         syntax: "<percentage>";
-        initial-value: 100%;
+        initial-value: 105%;
         inherits: false;
       }
       :root {

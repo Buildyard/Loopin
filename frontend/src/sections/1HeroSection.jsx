@@ -24,7 +24,7 @@ const HeroSection = () => {
   const videoOpacity = 1 - scrollPosition * 0.5; // Video fades out
   const textOpacity = 1 - scrollPosition; // Paragraphs fade out
   const underlineOpacity = 1 - scrollPosition; // Underlines fade out
-  const headingScale = 1 + scrollPosition * 0.6; // Headings scale up
+  const headingScale = 1 + scrollPosition * 1; // Headings scale up
 
   return (
     <Box sx={{ position: 'relative', height: '100vh', overflow: 'hidden' }}>

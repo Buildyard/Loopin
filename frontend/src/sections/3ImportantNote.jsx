@@ -42,7 +42,7 @@ const ImportantNote = () => {
   // List of phrases to display
   const phrases = [
     'context memory', 'widget ready', 'API-first', 'no retraining', 'self-learning', 'chat triggers',
-    'analytics dashboard', 'State of the art models', 'actionable AI', 'fills forms', 'Customer Support - Done Right', 'quick setup',
+    'analytics dashboard', 'State of the art models', 'actionable AI', 'fills forms', 'Customer Support, Done Right', 'quick setup',
     'multichannel', 'lightweight', 'custom flows', 'embed-ready', 'redirects', 'dynamic data',
     'plug & play', 'webhook call', 'auto-summary', 'scalable', 'smart reroute', 'integrate once',
     'low-code config', 'relevance boost', 'SDK Available', 'intent detection', 'enterprise-ready',
@@ -101,8 +101,8 @@ const ImportantNote = () => {
               gridRow: item.gridRow,
               gridColumn: item.gridColumn,
               transformStyle: 'preserve-3d',
-              fontSize: index === 10 ? '10vmin' : '5vmin',
-              fontWeight: index === 10 ? 'bold' : 'lighter',
+              fontSize: index === 10 ? '7vmin' : '5vmin',
+              fontWeight: index === 10 ? 'lighter' : 'lighter',
               whiteSpace: 'nowrap',
               animation: `${item.animationName} linear both`,
               animationTimeline: 'view(block)', // Changed from 'scroll(root block)'
